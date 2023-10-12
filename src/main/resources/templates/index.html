@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Bootcamp</title>
+    <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<header>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/login/account">Log In</a>
+        <a href="/register/account">Register</a>
+    </nav>
+</header>
+<div class="wrapper">
+    <h1>List of Jobs</h1>
+    <section th:each="job : ${jobs}" class="job-section">
+        <h2 th:text="${job.title}">Job Title</h2>
+        <p th:text="${job.description}">Job Description</p>
+        <p th:text="${job.employer.username}">Posted by: Employer Name</p>
+        <a th:href="@{'/apply/' + ${job.id}}" class="apply-button">Apply</a>
+    </section>
+</div>
+</body>
+</html>
