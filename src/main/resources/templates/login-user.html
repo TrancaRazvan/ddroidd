@@ -2,48 +2,35 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Bootcamp</title>
+    <title>User Login</title>
     <link th:href="@{/css/form.css}" rel="stylesheet" type="text/css">
 </head>
 <main>
-    <form>
-        <h1>Create an account!</h1>
+    <form th:action="@{/login}" th:object="${user}" method="post">
+        <h1>User Login</h1>
 
-        <!-- NAME FIELD -->
+        <!-- USERNAME FIELD -->
         <div class="form-field">
-            <label for="field" class="label--required">Name</label>
+            <label for="username" class="label--required">Username</label>
             <section>
                 <svg class="icon icon-person"><use xlink:href="#icon-person"></use></svg>
-                <input id="field" required type="text" placeholder="Jane Doe" />
+                <input id="username" name="username" required type="text" placeholder="Your username" />
             </section>
         </div>
 
-        <!-- PHONE FIELD -->
+        <!-- PASSWORD FIELD -->
         <div class="form-field">
-            <label for="password" class="label--required">Phone</label>
+            <label for="password" class="label--required">Password</label>
             <section>
                 <svg class="icon icon-lock"><use xlink:href="#icon-lock"></use></svg>
-                <input id="password" required type="password" placeholder="password" />
+                <input id="password" name="password" required type="password" placeholder="Your password" />
             </section>
         </div>
 
-        <!-- EMAIL FIELD -->
-        <div class="form-field">
-            <label for="email" class="label--required">Email</label>
-            <section>
-                <svg class="icon icon-mail_outline"><use xlink:href="#icon-mail_outline"></use></svg>
-                <input id="email" required type="email" placeholder="somebody@me.com" />
-            </section>
-        </div>
-
-
-
-        <!-- BUTTONS -->
+        <!-- LOGIN BUTTON -->
         <div class="form-buttons">
-            <button type="submit" class="a-btn--filled">Sign-up!</button>
-            <button class="a-btn">Log in</button>
+            <button type="submit" class="a-btn">Log in</button>
         </div>
-
     </form>
 </main>
 

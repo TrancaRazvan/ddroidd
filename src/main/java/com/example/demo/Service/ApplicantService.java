@@ -16,9 +16,6 @@ public class ApplicantService {
     private final PasswordEncoder passwordEncoder;
 
     public Applicant saveApplicant(Applicant applicant) {
-        if (applicantRepository.findById(applicant.getId()).isPresent()) {
-            return null;
-        }
         return applicantRepository.save(applicant);
     }
 }

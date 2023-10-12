@@ -1,6 +1,5 @@
 package com.example.demo.Controller;
 
-import com.example.demo.Model.Applicant;
 import com.example.demo.Model.User;
 import com.example.demo.Service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -16,20 +15,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class UserController {
     @Autowired
     private final UserService userService;
-
-    @PostMapping("/register/user")
-    public String createUser(@ModelAttribute("applicant") User user) {
-        userService.registerUser(user);
-        return  "redirect:/login/user";
+    @PostMapping("/register")
+    public String createUser(@ModelAttribute("user") User user) {
+        userService.registerEmployer(user);
+        return  "redirect:/login";
     }
-    @GetMapping("/login/user")
+    @GetMapping("/login")
     public String loginUser(Model model) {
         model.addAttribute("user", new User());
-        return  "login.html";
+        return  "login-user.html";
     }
-    @GetMapping("/register/user")
+    @GetMapping("/register")
     public String showRegisterForm(Model model) {
         model.addAttribute("user", new User());
-        return "register.html";
+        return "register-user.html";
     }
 }

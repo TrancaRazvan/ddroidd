@@ -9,17 +9,16 @@
 <header>
     <nav>
         <a href="/">Home</a>
-        <a href="/login/account">Log In</a>
-        <a href="/register/account">Register</a>
+        <a href="/login">Log In</a>
+        <a href="/register">Register</a>
     </nav>
 </header>
 <div class="wrapper">
-    <h1>List of Jobs</h1>
+    <h1>List of Jobs:</h1>
     <section th:each="job : ${jobs}" class="job-section">
         <h2 th:text="${job.title}">Job Title</h2>
         <p th:text="${job.description}">Job Description</p>
-        <p th:text="${job.employer.username}">Posted by: Employer Name</p>
-        <a th:href="@{'/apply/' + ${job.id}}" class="apply-button">Apply</a>
+<!--        <p th:text="${job.user.username}">Posted by: Employer Name</p>-->
     </section>
 </div>
 </body>

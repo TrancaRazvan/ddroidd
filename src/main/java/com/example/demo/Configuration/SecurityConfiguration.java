@@ -23,15 +23,16 @@ public class SecurityConfiguration{
         http
 
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/login", "/register", "/").permitAll()
+                        .requestMatchers("/","/login","/register").permitAll()
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         .requestMatchers(PathRequest.toStaticResources().at(StaticResourceLocation.CSS)).permitAll()
-                        .anyRequest().permitAll()
+                        .requestMatchers("/create/job").hasAuthority("EMPLOYER")
+                        .anyRequest().authenticated()
 
                 )
                 .formLogin((form) -> form
                         .loginPage("/login")
-                        .defaultSuccessUrl("/")
+                        .successHandler(new AuthHandler())
                         .permitAll()
                 )
                 .logout(LogoutConfigurer::permitAll);

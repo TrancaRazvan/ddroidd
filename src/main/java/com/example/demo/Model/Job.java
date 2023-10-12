@@ -1,10 +1,8 @@
 package com.example.demo.Model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -30,6 +28,6 @@ public class Job {
     private Set<Applicant> applicants;
 
     @ManyToOne
-    @JoinColumn(name = "employer_id")
-    private Employer employer;
+    @JoinColumn(name = "user_id")
+    private User user;
 }

@@ -1,7 +1,7 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Model.Job;
-import com.example.demo.Service.EmployerService;
+import com.example.demo.Service.UserService;
 import com.example.demo.Service.JobService;
 import lombok.RequiredArgsConstructor;
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
@@ -16,18 +16,9 @@ import java.util.List;
 @RequiredArgsConstructor
 public class IndexController {
     @Autowired
-    private final EmployerService employerService;
+    private final UserService userService;
     @Autowired
     private final JobService jobService;
-    @GetMapping("/login/account")
-    public String showLoginForm(Model model) {
-        return "login-choose.html";
-    }
-
-    @GetMapping("/register/account")
-    public String showRegisterForm(Model model) {
-        return "register-choose.html";
-    }
     @GetMapping("/")
     public String showIndexPage(Model model, Authentication authentication) {
 
@@ -36,21 +27,14 @@ public class IndexController {
 
         return "index.html";
     }
-    @GetMapping("/home/user")
+    @GetMapping("/home")
     public String showHomePageForUsers(Model model, Authentication authentication) {
 
         List<Job> jobs = jobService.findAll();
         model.addAttribute("jobs", jobs);
 
-        return "index-user.html";
+        return "home.html";
     }
-    @GetMapping("/home/employer")
-    public String showHomePageForEmployer(Model model, Authentication authentication) {
 
-        List<Job> jobs = jobService.findAll();
-        model.addAttribute("jobs", jobs);
-
-        return "index-employer.html";
-    }
 
 }
